@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Route, Link, useHistory } from "react-router-dom";
+// import Component
+import Loading from "./Loading";
+//import img
 import sample from "../img/sample/avatar.jpg";
-import load from "../img/sample/loading.gif";
 
 function Character() {
   let history = useHistory();
@@ -14,7 +16,7 @@ function Character() {
   let [charDetail, charDetailChange] = useState([]);
   return (
     <main className="char-main">
-      <div className="char-title">Character</div>
+      <h2 className="main-title">Character</h2>
       <Route exact path="/character">
         <div className="search-container">
           <input
@@ -66,7 +68,19 @@ function Character() {
           </button>
         </div>
         <div>
-          <CharDetail charId={charId} />
+          {loading === false ? <Loading /> : null}
+          <CharDetail
+            charId={charId}
+            charDetail={charDetail}
+            charDetailChange={charDetailChange}
+            setLoading={setLoading}
+          />
+
+          <CharDetailInfo
+            charId={charId}
+            charDetail={charDetail}
+            charDetailChange={charDetailChange}
+          />
         </div>
       </Route>
     </main>
@@ -127,12 +141,13 @@ function CharList(props) {
 }
 
 function CharDetail(props) {
-  console.log(props);
   useEffect(() => {
+    props.setLoading(false);
     axios
       .get(`https://xivapi.com/character/${props.charId}`)
       .then((res) => {
-        console.log(res.data);
+        props.setLoading(true);
+        props.charDetailChange(res.data.Character);
       })
       .catch((e) => {
         console.log("에러");
@@ -141,53 +156,49 @@ function CharDetail(props) {
   return <div></div>;
 }
 
-function CharDetailInfo() {
+function CharDetailInfo(props) {
   return (
-    <div>
-      <div className="tabBtn">
-        <button>프로필</button>
-        <button>클래스</button>
-        <button>꼬마친구</button>
-        <button>탈 것</button>
-      </div>
+    <div className="char-detail">
       <div className="profile">
-        <ul className="profile-ul">
-          <li className="profile-list">
-            <h3>프로필</h3>
-            <div className="avater">
-              <img src="#" alt="#" />
-            </div>
-            <ul>
-              <li>
-                닉네임: <span></span>
-              </li>
-              <li>
-                생일: <span></span>
-              </li>
-              <li className="char-server">
-                서버|데이터 센터: <span></span>|<span></span>
-              </li>
-              <li>
-                자유부대명: <span></span>
-              </li>
-              <li>
-                소개: <span></span>
-              </li>
-            </ul>
-          </li>
-        </ul>
+        <div className="avatar">
+          <img
+            className="avatar-img"
+            src={props.charDetail.Avatar}
+            alt={props.charDetail.Name}
+          />
+        </div>
+        <h3>{props.charDetail.Name}</h3>
       </div>
-      <div className="portrait">
-        <img src="#" alt="#" />
+      <div className="profile-info">
+        <div className="portrait">
+          <img
+            width="100%"
+            src={props.charDetail.Portrait}
+            alt={props.charDetail.Name}
+          />
+        </div>
+        <div>
+          <ul className="profile-ul">
+            <li className="profile-list">
+              <ul>
+                <li>
+                  생일: <span>{props.charDetail.Nameday}</span>
+                </li>
+                <li>
+                  서버 | 데이터 센터: <span>{props.charDetail.Server}</span> |
+                  <span> {props.charDetail.DC}</span>
+                </li>
+                <li>
+                  자유부대명: <span>{props.charDetail.FreeCompanyName}</span>
+                </li>
+                <li>
+                  소개: <span>{props.charDetail.bio}</span>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  );
-}
-
-function Loading() {
-  return (
-    <div className="loading">
-      <img className="avatar-img" src={load} alt="avatar-img" width="25px" />
     </div>
   );
 }
