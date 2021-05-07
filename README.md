@@ -20,3 +20,4 @@
 | API    | Website             |
 | ------ | ------------------- |
 | xivapi | https://xivapi.com/ |
+| FFXIV Collect | https://github.com/mattantonelli/ffxiv-collect |
