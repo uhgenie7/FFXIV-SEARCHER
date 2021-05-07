@@ -2,18 +2,49 @@
 <html lang="ko">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
+    <!-- seo -->
+    <meta name="author" content="엄혜진">
+    <meta name="keywords" content="LODESTONE, FFXIV, API">
     <meta
       name="description"
-      content="Web site created using create-react-app"
+      content="FFXIV SEARCHER는 FFXIV LODESTONE API를 가지고 데이터를 받아와 프로필을 검색할 수 있는 사이트입니다."
     />
+    <meta property="og:title" content="LODESTONE">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="./logo.png">
+    <meta property="og:site_name" content="FFXIV SEARCHER">
+    <meta property="og:description" content="FFXIV SEARCHER는 FFXIV LODESTONE API를 가지고 데이터를 받아와 프로필을 검색할 수 있는 사이트입니다.">
+    <!-- link -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <title>React App</title>
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <title>FFXIV SEARCHER</title>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript>
+      <style>
+        body {
+          margin: 0;
+          padding: 0;
+          height: 100vh;
+          position: relative;
+        }
+        .error-container {
+            position: absolute;
+            transform: translate(50%);
+            background-color: #fff;
+            color: #0f1419;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 10%;
+            font-size: 16px;  
+          }
+      </style>
+      <div class="error-container">
+        <h1>자바스크립트를 사용할 수 없습니다.</h1>
+        <p>이 브라우저에서 자바스크립트를 사용할 수 없는 것으로 감지되었습니다. 계속 사용하려면 자바스크립트를 사용 설정하거나 지원되는 브라우저로 전환하세요.</p>
+      </div>
+    </noscript>
     <div id="root"></div>
   </body>
 </html>
