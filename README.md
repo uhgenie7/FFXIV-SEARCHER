@@ -10,7 +10,7 @@
 
 - [HTML]
 - [CSS]
-- [SS]
+- [SCSS]
 - [JavaScript]
 - [REACT]
 
