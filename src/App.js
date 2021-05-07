@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./App.css";
+import "./App.scss";
 import axios from "axios";
 import { Link, Route, Switch } from "react-router-dom";
 // import Component
@@ -14,6 +14,7 @@ import github from "./img/contact/github.png";
 import tistory from "./img/contact/tistory.png";
 
 function App() {
+  let [loading, setLoading] = useState(null);
   return (
     <div className="App">
       <div className="wrap">
@@ -65,7 +66,7 @@ function App() {
             <Item />
           </Route>
           <Route path="/orchestrions">
-            <Orchestrions />
+            <Orchestrions loading={loading} setLoading={setLoading} />
           </Route>
           <Route path="/:id"></Route>
         </Switch>
