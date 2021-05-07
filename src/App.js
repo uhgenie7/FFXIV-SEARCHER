@@ -1,9 +1,17 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import axios from "axios";
+import { Link, Route, Switch } from "react-router-dom";
+// import Component
+import Main from "./component/Main";
+import Item from "./component/Item";
 import Character from "./component/Character";
 import Alert from "./component/Alert";
-import { Link, Route, Switch } from "react-router-dom";
+import Another from "./component/Another";
+import Orchestrions from "./component/Orchestrions";
+//import img
+import github from "./img/contact/github.png";
+import tistory from "./img/contact/tistory.png";
 
 function App() {
   return (
@@ -13,23 +21,25 @@ function App() {
           <div className="header-inner">
             <div className="nav-container">
               <nav className="nav">
-                <h1>FFXIV</h1>
+                <Link to="/">
+                  <h1>FFXIV SEARCHER</h1>
+                </Link>
                 <ul>
                   <li>
                     <Link to="/character">캐릭터</Link>
                   </li>
                   <li>
-                    <Link to="/free-company">자유부대</Link>
-                  </li>
-                  <li>
                     <Link to="/item">아이템</Link>
                   </li>
                   <li>
-                    <Link to="/item">ABOUT</Link>
+                    <Link to="/orchestrions">오케스트리온</Link>
+                  </li>
+                  <li>
+                    <Link to="/another">외부 사이트</Link>
                   </li>
                 </ul>
                 <ul>
-                  <li>profile</li>
+                  <li>PROFILE</li>
                 </ul>
               </nav>
             </div>
@@ -43,32 +53,20 @@ function App() {
         <Alert />
         <Switch>
           <Route exact path="/">
-            <main>
-              <div className="notice">
-                <h2>공지사항</h2>
-              </div>
-              <div className="board">
-                <h2>게시판</h2>
-              </div>
-              <div className="board">
-                <h2>게시판2</h2>
-              </div>
-            </main>
-            <aside>
-              <div className="board">
-                <h2>게시판 어사이드</h2>
-              </div>
-              <div className="board">
-                <h2>게시판 어사이드2</h2>
-              </div>
-            </aside>
+            <Main />
           </Route>
           <Route path="/character">
             <Character />
           </Route>
-          <Route path="/free-company"></Route>
-          <Route path="/item"></Route>
-          <Route path="/about"></Route>
+          <Route path="/another">
+            <Another />
+          </Route>
+          <Route path="/item">
+            <Item />
+          </Route>
+          <Route path="/orchestrions">
+            <Orchestrions />
+          </Route>
           <Route path="/:id"></Route>
         </Switch>
         <footer>
@@ -76,10 +74,17 @@ function App() {
             FINAL FANTASY XIV © 2010 - 2020 SQUARE ENIX CO., LTD. All Rights
             Reserved.
             <br />
-            Published in Korea by ACTOZ SOFT CO., LTD. <br />본 사이트는 Square
-            Enix 및 Actoz Soft와 관련이 없습니다.
+            본 사이트는 Square Enix 및 Actoz Soft와 관련이 없습니다.
             <br />
             ALL FINAL FANTASY XIV CONTENT IS PROPERTY OF SQUARE ENIX CO., LTD
+          </div>
+          <div className="sns">
+            <a href="https://github.com/uhj1993/lodestone" target="_blank">
+              <img src={github} alt="githube" />
+            </a>
+            <a href="https://jineecode.tistory.com/" target="_blank">
+              <img src={tistory} alt="tistory" />
+            </a>
           </div>
         </footer>
       </div>
