@@ -9,6 +9,7 @@ import Character from "./component/Character";
 import Alert from "./component/Alert";
 import Another from "./component/Another";
 import Orchestrions from "./component/Orchestrions";
+import OrchDetail from "./component/OrchDetail";
 //import img
 import github from "./img/contact/github.png";
 import tistory from "./img/contact/tistory.png";
@@ -65,10 +66,13 @@ function App() {
           <Route path="/item">
             <Item />
           </Route>
-          <Route path="/orchestrions">
+          <Route exact path="/orchestrions">
             <Orchestrions loading={loading} setLoading={setLoading} />
           </Route>
-          <Route path="/:id"></Route>
+          <Route path="/orchestrions/:id">
+            <OrchDetail loading={loading} setLoading={setLoading} />
+          </Route>
+          <Route path="/:id">404</Route>
         </Switch>
         <footer>
           <div className="inner">
