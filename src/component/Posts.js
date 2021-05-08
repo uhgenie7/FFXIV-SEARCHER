@@ -2,7 +2,39 @@ import React from "react";
 import Loading from "./Loading";
 import styled from "styled-components";
 
-const Posts = ({ posts, loading }) => {
+const Posts = ({ posts, loading, tab }) => {
+  const allPage = posts.map((item, index) => {
+    console.log(item.category.id);
+    return (
+      <tr>
+        <th>
+          <img src={item.icon} alt="악보" />
+        </th>
+        <th>{item.name}</th>
+        <th>{item.description}</th>
+        <th>{item.category.name}</th>
+        <th>{item.patch}</th>
+      </tr>
+    );
+  });
+
+  const filterPage = posts
+    .filter((item) => {
+      return item.category.id === tab;
+    })
+    .map((item) => {
+      return (
+        <tr>
+          <th>
+            <img src={item.icon} alt="악보" />
+          </th>
+          <th>{item.name}</th>
+          <th>{item.description}</th>
+          <th>{item.category.name}</th>
+          <th>{item.patch}</th>
+        </tr>
+      );
+    });
   return (
     <>
       {loading === false ? <Loading /> : null}
@@ -17,21 +49,7 @@ const Posts = ({ posts, loading }) => {
               <th>패치버전</th>
             </tr>
           </thead>
-          <tbody>
-            {posts.map((item, index) => {
-              return (
-                <tr>
-                  <th>
-                    <img src={item.icon} alt="악보" />
-                  </th>
-                  <th>{item.name}</th>
-                  <th>{item.description}</th>
-                  <th>{item.category.name}</th>
-                  <th>{item.patch}</th>
-                </tr>
-              );
-            })}
-          </tbody>
+          <tbody>{tab === 0 ? allPage : filterPage}</tbody>
         </table>
       </div>
     </>

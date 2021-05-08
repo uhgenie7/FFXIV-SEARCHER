@@ -8,6 +8,7 @@ function Orchestrions(props) {
   let [posts, setPosts] = useState([]);
   let [currentPage, setCurrentPage] = useState(1);
   let [postsPerPage, setPostPerPage] = useState(10);
+  let [tab, setTab] = useState(0);
 
   useEffect(() => {
     props.setLoading(false);
@@ -33,23 +34,109 @@ function Orchestrions(props) {
   return (
     <main className="och-main">
       <h2 className="main-title">Orchestrions</h2>
-      <div className="btns">
-        <button>ALL</button>
-        <button>지역</button>
-        <button>던전</button>
+      <div className="och-btns">
+        <button
+          className="och-btn"
+          onClick={() => {
+            setTab(0);
+          }}
+        >
+          전체
+        </button>
+        <button
+          className="och-btn"
+          onClick={() => {
+            setTab(2);
+          }}
+        >
+          지역 1
+        </button>
+        <button
+          className="och-btn"
+          onClick={() => {
+            setTab(9);
+          }}
+        >
+          지역 2
+        </button>
+        <button
+          className="och-btn"
+          onClick={() => {
+            setTab(3);
+          }}
+        >
+          던전
+        </button>
+        <button
+          className="och-btn"
+          onClick={() => {
+            setTab(4);
+          }}
+        >
+          토벌전
+        </button>
+        <button
+          className="och-btn"
+          onClick={() => {
+            setTab(5);
+          }}
+        >
+          레이드 1
+        </button>
+        <button
+          className="och-btn"
+          onClick={() => {
+            setTab(10);
+          }}
+        >
+          레이드 2
+        </button>
+        <button
+          className="och-btn"
+          onClick={() => {
+            setTab(11);
+          }}
+        >
+          주거별
+        </button>
+        <button
+          className="och-btn"
+          onClick={() => {
+            setTab(6);
+          }}
+        >
+          기타
+        </button>
+        <button
+          className="och-btn"
+          onClick={() => {
+            setTab(7);
+          }}
+        >
+          시즌
+        </button>
+        <button
+          className="och-btn"
+          onClick={() => {
+            setTab(8);
+          }}
+        >
+          스토어
+        </button>
       </div>
       <div className="oche-posts">
         <Posts
-          posts={currentPosts(posts)}
+          // posts={currentPosts(posts)}
+          posts={posts}
           loading={props.loading}
           setLoading={props.setLoading}
-          // posts={posts}
+          tab={tab}
         />
-        <Pagination
+        {/* <Pagination
           postsPerPage={postsPerPage}
           totalPosts={posts.length}
           paginate={setCurrentPage}
-        />
+        /> */}
       </div>
     </main>
   );
