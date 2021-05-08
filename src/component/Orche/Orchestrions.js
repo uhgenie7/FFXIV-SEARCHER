@@ -1,36 +1,25 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Loading from "./Loading";
+import Loading from "../Loading";
 import Orch from "./Orch";
-import Pagination from "./Pagination";
+import Pagination from "../Pagination";
+import OrchDetail from "./OrchDetail";
 
 function Orchestrions(props) {
-  let [posts, setPosts] = useState([]);
-  let [currentPage, setCurrentPage] = useState(1);
-  let [postsPerPage, setPostPerPage] = useState(10);
   let [tab, setTab] = useState(0);
 
-  useEffect(() => {
-    props.setLoading(false);
-    axios
-      .get("https://ffxivcollect.com/api/orchestrions/")
-      .then((res) => {
-        setPosts(res.data.results);
-        props.setLoading(true);
-      })
-      .catch((e) => {
-        console.log("실패");
-      });
-  }, []);
-  // pagination 변수
-  const indexOfLast = currentPage * postsPerPage;
-  const indexOfFirst = indexOfLast - postsPerPage;
-  function currentPosts(tmp) {
-    let currentPosts = 0;
-    currentPosts = tmp.slice(indexOfFirst, indexOfLast);
-    return currentPosts;
-  }
-  console.log(posts);
+  // useEffect(() => {
+  //   props.setLoading(false);
+  //   axios
+  //     .get("https://ffxivcollect.com/api/orchestrions/")
+  //     .then((res) => {
+  //       props.setPosts(res.data.results);
+  //       props.setLoading(true);
+  //     })
+  //     .catch((e) => {
+  //       console.log("실패");
+  //     });
+  // }, []);
   return (
     <main className="orch-main">
       <h2 className="main-title">Orchestrions</h2>
@@ -126,17 +115,12 @@ function Orchestrions(props) {
       </div>
       <div className="orch-posts">
         <Orch
-          // posts={currentPosts(posts)}
-          posts={posts}
+          posts={props.posts}
           loading={props.loading}
           setLoading={props.setLoading}
           tab={tab}
+          setPosts={props.setPosts}
         />
-        {/* <Pagination
-          postsPerPage={postsPerPage}
-          totalPosts={posts.length}
-          paginate={setCurrentPage}
-        /> */}
       </div>
     </main>
   );

@@ -361,9 +361,18 @@ footer {
     }
   }
 
-  h3,
+  h3 {
+    color: $main;
+  }
   h4 {
     color: $main;
+    padding: 20px;
+  }
+  a {
+    color: $main;
+  }
+  audio {
+    margin: 20px;
   }
 }
 

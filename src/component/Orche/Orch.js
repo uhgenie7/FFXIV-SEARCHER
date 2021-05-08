@@ -1,24 +1,19 @@
 import React from "react";
-import Loading from "./Loading";
+import Loading from "../Loading";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 
-const Orch = ({ posts, loading, tab }) => {
+const Orch = ({ posts, setPosts, loading, tab }) => {
   const history = useHistory();
-  function handleClick(item) {
-    history.push(`/orchestrions/${item}`);
-  }
-
-  console.log(posts.id);
-  const allPage = posts.map((item) => {
+  console.log(posts);
+  const allPage = posts.map((item, index) => {
     return (
-      <tr
-        onClick={() => {
-          handleClick(item.id);
-        }}
-      >
-        {tableFun(item)}
-      </tr>
+      <OcheTable
+        posts={posts}
+        post={posts[index]}
+        history={history}
+        key={index}
+      />
     );
   });
 
@@ -26,15 +21,14 @@ const Orch = ({ posts, loading, tab }) => {
     .filter((item) => {
       return item.category.id === tab;
     })
-    .map((item) => {
+    .map((item, index) => {
       return (
-        <tr
-          onClick={() => {
-            handleClick(item.id);
-          }}
-        >
-          {tableFun(item)}
-        </tr>
+        <OcheTable
+          posts={posts}
+          post={posts[index]}
+          history={history}
+          key={index}
+        />
       );
     });
   return (
@@ -69,6 +63,24 @@ function tableFun(item) {
       <th>{item.category.name}</th>
       <th>{item.patch}</th>
     </>
+  );
+}
+
+function OcheTable({ post, history }) {
+  return (
+    <tr
+      onClick={() => {
+        history.push(`/orchestrions/${post.id}`);
+      }}
+    >
+      <th>
+        <img src={post.icon} alt="악보" />
+      </th>
+      <th>{post.name}</th>
+      <th>{post.description}</th>
+      <th>{post.category.name}</th>
+      <th>{post.patch}</th>
+    </tr>
   );
 }
 

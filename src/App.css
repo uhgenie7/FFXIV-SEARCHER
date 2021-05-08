@@ -148,7 +148,8 @@ footer {
   margin: 20px;
 }
 
-.char-main {
+.char-main,
+.orch-main {
   background: #e6e6e6;
 }
 .main-title {
@@ -291,4 +292,28 @@ footer {
 
 .lists .list ul li a {
   color: #fdebd1;
+}
+
+/* orch */
+.orch-posts {
+  padding: 20px;
+}
+
+.orch-posts table {
+  width: 100%;
+  background: #333;
+  color: #eee;
+  border-collapse: collapse;
+}
+
+.orch-posts thead th {
+  background: #222;
+  border-bottom: 2px solid #eee;
+  padding: 10px;
+  white-space: nowrap;
+}
+
+.orch-posts tbody th {
+  border-bottom: 1px solid #888;
+  padding: 10px;
 }
