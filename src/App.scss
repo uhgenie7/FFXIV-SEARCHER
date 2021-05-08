@@ -2,6 +2,18 @@
 $main: #fdebd1;
 $blue: #293c66;
 
+// btn
+@mixin btn() {
+  color: #64bfff;
+  background: #000;
+  display: inline-block;
+  border: 1px solid #555;
+  border-radius: 3px;
+  padding: 10px;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
 .wrap {
   width: 100%;
   max-width: 80%;
@@ -134,14 +146,7 @@ footer {
 }
 
 .notice-alert button {
-  color: #64bfff;
-  background: #000;
-  display: inline-block;
-  border: 1px solid #555;
-  border-radius: 3px;
-  padding: 10px;
-  font-size: 16px;
-  margin-top: 20px;
+  @include btn();
 }
 
 /* Char */
@@ -299,6 +304,19 @@ footer {
 }
 
 /* oche */
+.och-btns {
+  text-align: center;
+}
+
+.och-btn {
+  @include btn();
+  &:hover,
+  &:focus {
+    color: white;
+    background-color: $blue;
+  }
+}
+
 .oche-posts {
   padding: 20px;
 }
