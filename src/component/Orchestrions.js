@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Loading from "./Loading";
-import Posts from "./Posts";
+import Orch from "./Orch";
 import Pagination from "./Pagination";
 
 function Orchestrions(props) {
@@ -32,11 +32,11 @@ function Orchestrions(props) {
   }
   console.log(posts);
   return (
-    <main className="och-main">
+    <main className="orch-main">
       <h2 className="main-title">Orchestrions</h2>
-      <div className="och-btns">
+      <div className="orch-btns">
         <button
-          className="och-btn"
+          className="orch-btn"
           onClick={() => {
             setTab(0);
           }}
@@ -44,7 +44,7 @@ function Orchestrions(props) {
           전체
         </button>
         <button
-          className="och-btn"
+          className="orch-btn"
           onClick={() => {
             setTab(2);
           }}
@@ -52,7 +52,7 @@ function Orchestrions(props) {
           지역 1
         </button>
         <button
-          className="och-btn"
+          className="orch-btn"
           onClick={() => {
             setTab(9);
           }}
@@ -60,7 +60,7 @@ function Orchestrions(props) {
           지역 2
         </button>
         <button
-          className="och-btn"
+          className="orch-btn"
           onClick={() => {
             setTab(3);
           }}
@@ -68,7 +68,7 @@ function Orchestrions(props) {
           던전
         </button>
         <button
-          className="och-btn"
+          className="orch-btn"
           onClick={() => {
             setTab(4);
           }}
@@ -76,7 +76,7 @@ function Orchestrions(props) {
           토벌전
         </button>
         <button
-          className="och-btn"
+          className="orch-btn"
           onClick={() => {
             setTab(5);
           }}
@@ -84,7 +84,7 @@ function Orchestrions(props) {
           레이드 1
         </button>
         <button
-          className="och-btn"
+          className="orch-btn"
           onClick={() => {
             setTab(10);
           }}
@@ -92,7 +92,7 @@ function Orchestrions(props) {
           레이드 2
         </button>
         <button
-          className="och-btn"
+          className="orch-btn"
           onClick={() => {
             setTab(11);
           }}
@@ -100,7 +100,7 @@ function Orchestrions(props) {
           주거별
         </button>
         <button
-          className="och-btn"
+          className="orch-btn"
           onClick={() => {
             setTab(6);
           }}
@@ -108,7 +108,7 @@ function Orchestrions(props) {
           기타
         </button>
         <button
-          className="och-btn"
+          className="orch-btn"
           onClick={() => {
             setTab(7);
           }}
@@ -116,7 +116,7 @@ function Orchestrions(props) {
           시즌
         </button>
         <button
-          className="och-btn"
+          className="orch-btn"
           onClick={() => {
             setTab(8);
           }}
@@ -124,8 +124,8 @@ function Orchestrions(props) {
           스토어
         </button>
       </div>
-      <div className="oche-posts">
-        <Posts
+      <div className="orch-posts">
+        <Orch
           // posts={currentPosts(posts)}
           posts={posts}
           loading={props.loading}
