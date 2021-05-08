@@ -4,18 +4,7 @@ import styled from "styled-components";
 
 const Posts = ({ posts, loading, tab }) => {
   const allPage = posts.map((item, index) => {
-    console.log(item.category.id);
-    return (
-      <tr>
-        <th>
-          <img src={item.icon} alt="악보" />
-        </th>
-        <th>{item.name}</th>
-        <th>{item.description}</th>
-        <th>{item.category.name}</th>
-        <th>{item.patch}</th>
-      </tr>
-    );
+    return tableFun(item);
   });
 
   const filterPage = posts
@@ -23,17 +12,7 @@ const Posts = ({ posts, loading, tab }) => {
       return item.category.id === tab;
     })
     .map((item) => {
-      return (
-        <tr>
-          <th>
-            <img src={item.icon} alt="악보" />
-          </th>
-          <th>{item.name}</th>
-          <th>{item.description}</th>
-          <th>{item.category.name}</th>
-          <th>{item.patch}</th>
-        </tr>
-      );
+      return tableFun(item);
     });
   return (
     <>
@@ -55,5 +34,19 @@ const Posts = ({ posts, loading, tab }) => {
     </>
   );
 };
+
+function tableFun(item) {
+  return (
+    <tr>
+      <th>
+        <img src={item.icon} alt="악보" />
+      </th>
+      <th>{item.name}</th>
+      <th>{item.description}</th>
+      <th>{item.category.name}</th>
+      <th>{item.patch}</th>
+    </tr>
+  );
+}
 
 export default Posts;
