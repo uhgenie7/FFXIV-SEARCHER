@@ -1,10 +1,25 @@
 import React from "react";
 import Loading from "./Loading";
 import styled from "styled-components";
+import { useHistory } from "react-router-dom";
 
-const Posts = ({ posts, loading, tab }) => {
-  const allPage = posts.map((item, index) => {
-    return tableFun(item);
+const Orch = ({ posts, loading, tab }) => {
+  const history = useHistory();
+  function handleClick(item) {
+    history.push(`/orchestrions/${item}`);
+  }
+
+  console.log(posts.id);
+  const allPage = posts.map((item) => {
+    return (
+      <tr
+        onClick={() => {
+          handleClick(item.id);
+        }}
+      >
+        {tableFun(item)}
+      </tr>
+    );
   });
 
   const filterPage = posts
@@ -12,7 +27,15 @@ const Posts = ({ posts, loading, tab }) => {
       return item.category.id === tab;
     })
     .map((item) => {
-      return tableFun(item);
+      return (
+        <tr
+          onClick={() => {
+            handleClick(item.id);
+          }}
+        >
+          {tableFun(item)}
+        </tr>
+      );
     });
   return (
     <>
@@ -37,7 +60,7 @@ const Posts = ({ posts, loading, tab }) => {
 
 function tableFun(item) {
   return (
-    <tr>
+    <>
       <th>
         <img src={item.icon} alt="악보" />
       </th>
@@ -45,8 +68,8 @@ function tableFun(item) {
       <th>{item.description}</th>
       <th>{item.category.name}</th>
       <th>{item.patch}</th>
-    </tr>
+    </>
   );
 }
 
-export default Posts;
+export default Orch;
