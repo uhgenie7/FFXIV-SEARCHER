@@ -5,15 +5,21 @@ import { useHistory } from "react-router-dom";
 
 const Orch = ({ posts, setPosts, loading, tab }) => {
   const history = useHistory();
-  console.log(posts);
   const allPage = posts.map((item, index) => {
     return (
-      <OcheTable
-        posts={posts}
-        post={posts[index]}
-        history={history}
-        key={index}
-      />
+      <tr
+        onClick={() => {
+          history.push(`/orchestrions/${item.id}`);
+        }}
+      >
+        <th>
+          <img src={item.icon} alt="악보" />
+        </th>
+        <th>{item.name}</th>
+        <th>{item.description}</th>
+        <th>{item.category.name}</th>
+        <th>{item.patch}</th>
+      </tr>
     );
   });
 
@@ -23,12 +29,19 @@ const Orch = ({ posts, setPosts, loading, tab }) => {
     })
     .map((item, index) => {
       return (
-        <OcheTable
-          posts={posts}
-          post={posts[index]}
-          history={history}
-          key={index}
-        />
+        <tr
+          onClick={() => {
+            history.push(`/orchestrions/${item.id}`);
+          }}
+        >
+          <th>
+            <img src={item.icon} alt="악보" />
+          </th>
+          <th>{item.name}</th>
+          <th>{item.description}</th>
+          <th>{item.category.name}</th>
+          <th>{item.patch}</th>
+        </tr>
       );
     });
   return (
@@ -51,37 +64,5 @@ const Orch = ({ posts, setPosts, loading, tab }) => {
     </>
   );
 };
-
-function tableFun(item) {
-  return (
-    <>
-      <th>
-        <img src={item.icon} alt="악보" />
-      </th>
-      <th>{item.name}</th>
-      <th>{item.description}</th>
-      <th>{item.category.name}</th>
-      <th>{item.patch}</th>
-    </>
-  );
-}
-
-function OcheTable({ post, history }) {
-  return (
-    <tr
-      onClick={() => {
-        history.push(`/orchestrions/${post.id}`);
-      }}
-    >
-      <th>
-        <img src={post.icon} alt="악보" />
-      </th>
-      <th>{post.name}</th>
-      <th>{post.description}</th>
-      <th>{post.category.name}</th>
-      <th>{post.patch}</th>
-    </tr>
-  );
-}
 
 export default Orch;

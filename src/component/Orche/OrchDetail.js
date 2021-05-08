@@ -1,10 +1,9 @@
 import React, { useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 
-let OrchDetail = (props) => {
+let OrchDetail = ({ posts }) => {
   let { id } = useParams();
-  console.log(id);
-  let OrchPost = props.posts.find(function (item) {
+  let OrchPost = posts.find(function (item) {
     return item.id == id;
   });
   console.log(OrchPost);
