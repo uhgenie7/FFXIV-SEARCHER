@@ -4,6 +4,7 @@ function Main() {
   return (
     <>
       <main className="main">
+        <h2 className="main-title">Main</h2>
         <div className="main-container">
           <h3>어서오세요</h3>
           <p>
