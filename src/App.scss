@@ -14,6 +14,38 @@ $blue: #293c66;
   margin-top: 20px;
 }
 
+// table
+@mixin table() {
+  width: 100%;
+  background: #333;
+  color: #eee;
+  border-collapse: collapse;
+}
+
+table {
+  @include table();
+
+  thead {
+    th {
+      background: #222;
+      border-bottom: 2px solid #eee;
+      padding: 10px;
+      white-space: nowrap;
+    }
+  }
+
+  tbody {
+    th {
+      border-bottom: 1px solid #888;
+      padding: 10px;
+    }
+
+    tr {
+      cursor: pointer;
+    }
+  }
+}
+
 .wrap {
   width: 100%;
   max-width: 80%;
@@ -29,6 +61,7 @@ header {
   display: flex;
   flex-direction: column;
   background: url(./img/sample/backgrond.png) center center;
+  background-size: cover;
   padding: 20px;
 }
 
@@ -120,12 +153,10 @@ footer {
 
 /* component */
 /* main */
-.main {
-  text-align: center;
-}
-
-.main h3 {
-  margin-bottom: 20px;
+.main-container {
+  h3 {
+    margin-bottom: 20px;
+  }
 }
 
 /* Alert */
@@ -158,7 +189,8 @@ footer {
 }
 
 .char-main,
-.orch-main {
+.orch-main,
+.emote-main {
   background: #e6e6e6;
 }
 .main-title {
@@ -317,38 +349,13 @@ footer {
   }
 }
 
-.orch-posts {
+.orch-posts,
+.emote-posts {
   padding: 20px;
 }
 
-.orch-posts table {
-  width: 100%;
-  background: #333;
-  color: #eee;
-  border-collapse: collapse;
-
-  thead {
-    th {
-      background: #222;
-      border-bottom: 2px solid #eee;
-      padding: 10px;
-      white-space: nowrap;
-    }
-  }
-
-  tbody {
-    th {
-      border-bottom: 1px solid #888;
-      padding: 10px;
-    }
-
-    tr {
-      cursor: pointer;
-    }
-  }
-}
-
-.orch-card {
+.orch-card,
+.emote-card {
   padding: 20px;
 
   .card-head {
@@ -364,10 +371,12 @@ footer {
   h3 {
     color: $main;
   }
-  h4 {
+  h4,
+  p {
     color: $main;
     padding: 20px;
   }
+
   a {
     color: $main;
   }
