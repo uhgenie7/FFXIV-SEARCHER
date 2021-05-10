@@ -13,25 +13,41 @@ const Another = () => {
             <ul>
               <li>
                 <span className="no">01</span>
-                <a href="http://ffxiv.ariyala.com/" target="_blank">
+                <a
+                  href="http://ffxiv.ariyala.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Ariyala 장비 시뮬레이터
                 </a>
               </li>
               <li>
                 <span className="no">02</span>
-                <a href="https://etro.gg/" target="_blank">
+                <a
+                  href="https://etro.gg/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Etro 장비 시뮬레이터
                 </a>
               </li>
               <li>
                 <span className="no">03</span>
-                <a href="https://ko.fflogs.com/" target="_blank">
+                <a
+                  href="https://ko.fflogs.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   KOREA FFLOG
                 </a>
               </li>
               <li>
                 <span className="no">04</span>
-                <a href="https://ffxiv-eureka.com/logograms" target="_blank">
+                <a
+                  href="https://ffxiv-eureka.com/logograms"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   에우레카 트래커
                 </a>
               </li>
@@ -45,31 +61,48 @@ const Another = () => {
                 <a
                   href="https://ariette.github.io/garlandbell/"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   KOREA 갈론드벨
                 </a>
               </li>
               <li>
                 <span className="no">02</span>
-                <a href="http://www.garlandtools.org/bell/" target="_blank">
+                <a
+                  href="http://www.garlandtools.org/bell/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   GLOBAL 갈론드벨
                 </a>
               </li>
               <li>
                 <span className="no">03</span>
-                <a href="https://ffxivteamcraft.com/search" target="_blank">
+                <a
+                  href="https://ffxivteamcraft.com/search"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   FFXIV 팀크래프트
                 </a>
               </li>
               <li>
                 <span className="no">04</span>
-                <a href="https://ko.ff14angler.com/" target="_blank">
+                <a
+                  href="https://ko.ff14angler.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   고양이는 배고프다
                 </a>
               </li>
               <li>
                 <span className="no">05</span>
-                <a href="http://ff14fish.carbuncleplushy.com/" target="_blank">
+                <a
+                  href="http://ff14fish.carbuncleplushy.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   피쉬트래커
                 </a>
               </li>
@@ -80,13 +113,21 @@ const Another = () => {
             <ul>
               <li>
                 <span className="no">01</span>
-                <a href="https://arrtripletriad.com/en/cards" target="_blank">
+                <a
+                  href="https://arrtripletriad.com/en/cards"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   트리플 트라이어 카드 (글로벌)
                 </a>
               </li>
               <li>
                 <span className="no">02</span>
-                <a href="https://ff14housing.com/" target="_blank">
+                <a
+                  href="https://ff14housing.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   하우징 (글로벌)
                 </a>
               </li>
