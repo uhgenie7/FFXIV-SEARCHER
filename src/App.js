@@ -16,6 +16,57 @@ import tistory from "./img/contact/tistory.png";
 function App() {
   let [loading, setLoading] = useState(null);
   let [alert, setAlert] = useState(false);
+  let [nav, setNav] = useState(false);
+  let [bar, setBar] = useState(false);
+  let [side, setSide] = useState(false);
+
+  function Nav() {
+    return (
+      <ul>
+        <li>
+          <Link to="/character">캐릭터</Link>
+        </li>
+        <li>
+          <Link to="/emotes">감정표현</Link>
+        </li>
+        <li>
+          <Link to="/orchestrions">오케스트리온</Link>
+        </li>
+        <li>
+          <Link to="/another">외부 사이트</Link>
+        </li>
+      </ul>
+    );
+  }
+
+  function SideNav() {
+    return (
+      <div className={`nav-side ${side ? "open" : ""}`}>
+        <h2>사이드 내비게이션</h2>
+        <i
+          class="fas fa-times"
+          onClick={() => {
+            setNav(false);
+            setSide(false);
+          }}
+        ></i>
+        <ul>
+          <li>
+            <Link to="/character">캐릭터</Link>
+          </li>
+          <li>
+            <Link to="/emotes">감정표현</Link>
+          </li>
+          <li>
+            <Link to="/orchestrions">오케스트리온</Link>
+          </li>
+          <li>
+            <Link to="/another">외부 사이트</Link>
+          </li>
+        </ul>
+      </div>
+    );
+  }
   return (
     <div className="App">
       <div className="wrap">
@@ -26,21 +77,20 @@ function App() {
                 <Link to="/">
                   <h1>FFXIV SEARCHER</h1>
                 </Link>
-                <ul>
-                  <li>
-                    <Link to="/character">캐릭터</Link>
-                  </li>
-                  <li>
-                    <Link to="/emotes">감정표현</Link>
-                  </li>
-                  <li>
-                    <Link to="/orchestrions">오케스트리온</Link>
-                  </li>
-                  <li>
-                    <Link to="/another">외부 사이트</Link>
-                  </li>
-                </ul>
+                {nav === false ? <Nav /> : null}
+                {bar === false ? (
+                  <div
+                    className="nav-toggle"
+                    onClick={() => {
+                      setNav(true);
+                      setSide(true);
+                    }}
+                  >
+                    <i class="fas fa-bars"></i>
+                  </div>
+                ) : null}
               </nav>
+              <SideNav nav={nav} />
             </div>
           </div>
         </header>
