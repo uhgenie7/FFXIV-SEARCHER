@@ -28,7 +28,8 @@ http://devuhj.com/ffxiv/
 
 - axios를 이용한 API 요청
 - react를 이용한 state 관리 
-- 함수형 컴포넌트를 위한 hook 사용 (useState, useEffect hook)
+- 함수형 컴포넌트를 위한 hook 사용 (useState, useEffect, useParams hook)
+- scss를 이용해 css 유지보수 업그레이드
 
 ## API
 
