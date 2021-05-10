@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Route, Link, useHistory } from "react-router-dom";
+import { Route, useHistory } from "react-router-dom";
 // import Component
 import Loading from "./Loading";
 //import img
@@ -26,6 +26,22 @@ function Character() {
             onChange={(e) => {
               searchChange(e.target.value);
             }}
+            onKeyPress={(e) => {
+              if (e.key === "Enter") {
+                setLoading(false);
+                axios
+                  .get(`https://xivapi.com/character/search?name=${search}`)
+                  .then((res) => {
+                    setLoading(true);
+                    let data = res.data.Results;
+                    resultChange(data);
+                    charChange(true);
+                  })
+                  .catch((error) => {
+                    console.log(error.response);
+                  });
+              }
+            }}
           />
           <button
             className="input-button"
@@ -40,7 +56,7 @@ function Character() {
                   charChange(true);
                 })
                 .catch((error) => {
-                  console.log("실패");
+                  console.log(error.response);
                 });
             }}
           >
@@ -115,8 +131,7 @@ function CharList(props) {
       </li>
     );
   });
-  console.log(props.result.slice(0, 5));
-  if (props.char == true) {
+  if (props.char === true) {
     return (
       <div>
         <ul className="char-ul">{resultArray}</ul>
