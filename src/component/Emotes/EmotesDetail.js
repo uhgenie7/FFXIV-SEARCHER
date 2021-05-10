@@ -8,7 +8,6 @@ const EmotesDetail = ({ posts }) => {
   });
   return (
     <main>
-      <div>{EmotePost.id}</div>
       <div className="emote-card">
         <div className="card-head">
           <div className="img-box">

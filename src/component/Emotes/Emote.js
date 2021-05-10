@@ -25,20 +25,18 @@ const Emote = ({ posts, loading }) => {
   return (
     <>
       {loading === false ? <Loading /> : null}
-      <div>
-        <table>
-          <thead>
-            <tr>
-              <th></th>
-              <th>악보명</th>
-              <th>커맨드</th>
-              <th>카테고리</th>
-              <th>패치버전</th>
-            </tr>
-          </thead>
-          <tbody>{allPage}</tbody>
-        </table>
-      </div>
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>악보명</th>
+            <th>커맨드</th>
+            <th>카테고리</th>
+            <th>패치버전</th>
+          </tr>
+        </thead>
+        <tbody>{allPage}</tbody>
+      </table>
     </>
   );
 };

@@ -416,6 +416,7 @@ footer {
 .orch-posts,
 .emote-posts {
   padding: 20px;
+  overflow-x: auto;
 }
 
 .orch-card,
@@ -462,6 +463,10 @@ footer {
 }
 
 @media screen and (max-width: 950px) {
+  main {
+    background-size: auto;
+  }
+
   .nav-toggle {
     display: block;
   }
@@ -470,6 +475,15 @@ footer {
     .navigation {
       display: none;
     }
+  }
+
+  .profile-info {
+    flex-direction: column;
+  }
+
+  .portrait {
+    margin-right: 0;
+    margin-bottom: 10px;
   }
 }
 
