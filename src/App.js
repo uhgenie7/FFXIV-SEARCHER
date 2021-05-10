@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.scss";
 import { Link, Route, Switch } from "react-router-dom";
+import styled from "styled-components";
 // import Component
 import Main from "./component/Main";
 import Character from "./component/Character";
@@ -19,10 +20,13 @@ function App() {
   let [nav, setNav] = useState(false);
   let [bar, setBar] = useState(false);
   let [side, setSide] = useState(false);
+  const SideMenuBackground = styled.div`
+    display: ${(props) => (props.side ? "block" : "none")};
+  `;
 
   function Nav() {
     return (
-      <ul>
+      <ul className="navigation">
         <li>
           <Link to="/character">캐릭터</Link>
         </li>
@@ -42,7 +46,6 @@ function App() {
   function SideNav() {
     return (
       <div className={`nav-side ${side ? "open" : ""}`}>
-        <h2>사이드 내비게이션</h2>
         <i
           class="fas fa-times"
           onClick={() => {
@@ -90,7 +93,15 @@ function App() {
                   </div>
                 ) : null}
               </nav>
-              <SideNav nav={nav} />
+              <SideMenuBackground
+                side={side}
+                onClick={() => {
+                  setNav(false);
+                  setSide(false);
+                }}
+              >
+                <SideNav nav={nav} />
+              </SideMenuBackground>
             </div>
           </div>
         </header>

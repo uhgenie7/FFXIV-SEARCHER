@@ -82,7 +82,7 @@ header {
     color: #fff;
   }
 
-  ul {
+  .navigation {
     display: flex;
   }
 
@@ -100,9 +100,13 @@ header {
   }
 }
 
+.nav-toggle {
+  display: none;
+}
+
 .nav-side {
   position: fixed;
-  width: 30%;
+  width: 50%;
   height: 100%;
   top: 0;
   right: 0;
@@ -110,13 +114,23 @@ header {
   background-size: cover;
   display: block;
   z-index: 1;
-  padding: 10rem 4rem;
+  padding: 40px 50px;
   color: $main;
   animation: showOut 0.4s ease-in forwards;
   ul,
   li,
   a {
     color: $main;
+    &:hover {
+      color: #fff;
+      transition: all 0.4s;
+    }
+  }
+
+  a {
+    font-size: 25px;
+    display: inline-block;
+    padding: 20px;
   }
 }
 
@@ -146,8 +160,9 @@ header {
 }
 
 .fa-times {
-  font-size: 25px;
+  font-size: 30px;
   cursor: pointer;
+  margin-bottom: 20px;
 }
 
 .header-search {
@@ -443,5 +458,23 @@ footer {
 
   .header-inner {
     max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav {
+    .navigation {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .nav-side {
+    width: 80%;
   }
 }
