@@ -10,6 +10,10 @@
   <img src="https://img.shields.io/badge/REACT-323330?style=flat-square&logo=REACT&logoColor=#61DAFB" height="24" />
 </p>
 
+## 사이트
+
+http://devuhj.com/ffxiv/
+
 ## 사용한 언어
 
 이 사이트를 만드는데 사용한 언어는 다음과 같습니다.
@@ -19,6 +23,12 @@
 - [SCSS]
 - [JavaScript]
 - [REACT]
+
+## 주요 특징
+
+- axios를 이용한 API 요청
+- react를 이용한 state 관리 
+- 함수형 컴포넌트를 위한 hook 사용 (useState, useEffect hook)
 
 ## API
 
