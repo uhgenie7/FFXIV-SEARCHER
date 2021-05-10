@@ -1,12 +1,11 @@
-import React, { useEffect } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import React from "react";
+import { useParams } from "react-router-dom";
 
 let OrchDetail = ({ posts }) => {
   let { id } = useParams();
   let OrchPost = posts.find(function (item) {
     return item.id == id;
   });
-  console.log(OrchPost);
   return (
     <main>
       <div>{OrchPost.id}</div>
@@ -36,7 +35,7 @@ let OrchDetail = ({ posts }) => {
             </ul>
             <hr></hr>
             <h4>샘플곡</h4>
-            <audio controls controlslist="nodownload" class="my-2">
+            <audio controls controlsList="nodownload">
               <source
                 src={`https://www.garlandtools.org/files/orchestrion/${OrchPost.id}.ogg`}
                 type="audio/ogg"
@@ -44,7 +43,11 @@ let OrchDetail = ({ posts }) => {
             </audio>
             <h4>
               출처:
-              <a href="http://www.garlandtools.org/db/" target="_blank">
+              <a
+                href="http://www.garlandtools.org/db/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Garland Tools
               </a>
             </h4>

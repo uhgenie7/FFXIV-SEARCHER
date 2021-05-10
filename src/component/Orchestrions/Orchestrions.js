@@ -1,28 +1,10 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import Loading from "../Loading";
-import Orch from "./Orch";
-import Pagination from "../Pagination";
-import OrchDetail from "./OrchDetail";
+import React, { useState } from "react";
+import Orchestrion from "./Orchestrion";
 
 function Orchestrions(props) {
   let [tab, setTab] = useState(0);
-
-  // useEffect(() => {
-  //   props.setLoading(false);
-  //   axios
-  //     .get("https://ffxivcollect.com/api/orchestrions/")
-  //     .then((res) => {
-  //       props.setPosts(res.data.results);
-  //       props.setLoading(true);
-  //     })
-  //     .catch((e) => {
-  //       console.log("실패");
-  //     });
-  // }, []);
   return (
     <main className="orch-main">
-      <h2 className="main-title">Orchestrions</h2>
       <div className="orch-btns">
         <button
           className="orch-btn"
@@ -114,7 +96,7 @@ function Orchestrions(props) {
         </button>
       </div>
       <div className="orch-posts">
-        <Orch
+        <Orchestrion
           posts={props.posts}
           loading={props.loading}
           setLoading={props.setLoading}

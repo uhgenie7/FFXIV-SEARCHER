@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Route, Switch } from "react-router-dom";
-import Orch from "./Orch";
 import OrchDetail from "./OrchDetail";
 import Orchestrions from "./Orchestrions";
-import Loading from "../Loading";
 
-function Users({ loading, setLoading }) {
+function OrchIndex({ loading, setLoading }) {
   let [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -24,6 +22,7 @@ function Users({ loading, setLoading }) {
 
   return (
     <>
+      <h2 className="main-title">Orchestrions</h2>
       <Switch>
         <Route exact path="/Orchestrions">
           <Orchestrions
@@ -41,4 +40,4 @@ function Users({ loading, setLoading }) {
   );
 }
 
-export default Users;
+export default OrchIndex;

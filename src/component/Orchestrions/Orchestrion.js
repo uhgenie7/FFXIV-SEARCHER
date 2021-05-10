@@ -1,13 +1,13 @@
 import React from "react";
 import Loading from "../Loading";
-import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 
-const Orch = ({ posts, setPosts, loading, tab }) => {
+const Orchestrion = ({ posts, loading, tab }) => {
   const history = useHistory();
   const allPage = posts.map((item, index) => {
     return (
       <tr
+        key={index}
         onClick={() => {
           history.push(`/orchestrions/${item.id}`);
         }}
@@ -25,11 +25,14 @@ const Orch = ({ posts, setPosts, loading, tab }) => {
 
   const filterPage = posts
     .filter((item) => {
-      return item.category.id === tab;
+      if (item.category.id === tab) {
+        return true;
+      }
     })
     .map((item, index) => {
       return (
         <tr
+          key={index}
           onClick={() => {
             history.push(`/orchestrions/${item.id}`);
           }}
@@ -65,4 +68,4 @@ const Orch = ({ posts, setPosts, loading, tab }) => {
   );
 };
 
-export default Orch;
+export default Orchestrion;
