@@ -1,6 +1,6 @@
 import React from "react";
 
-function Alert() {
+function Alert({ setAlert }) {
   return (
     <div className="notice-alert">
       <h2>LODESTONE</h2>
@@ -9,7 +9,13 @@ function Alert() {
         가능성이 큽니다. 일반적인 오류 응답은 다음과 같습니다. <br />
         404 Not Found / 429 Too Many Requests / 503 Maintenance
       </p>
-      <button>닫기</button>
+      <button
+        onClick={() => {
+          setAlert(true);
+        }}
+      >
+        닫기
+      </button>
     </div>
   );
 }
