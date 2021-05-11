@@ -29,7 +29,7 @@ const Emote = ({ posts, loading }) => {
         <thead>
           <tr>
             <th></th>
-            <th>악보명</th>
+            <th>감정표현</th>
             <th>커맨드</th>
             <th>카테고리</th>
             <th>패치버전</th>
