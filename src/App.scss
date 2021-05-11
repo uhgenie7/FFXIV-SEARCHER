@@ -248,10 +248,11 @@ footer {
 
 /* Char */
 .loading {
+  width: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 20px;
+  margin: 20px auto;
 }
 
 .char-main,
@@ -286,14 +287,8 @@ footer {
 }
 
 .input-button {
-  height: 100%;
-  color: #64bfff;
-  background: #000;
-  display: inline-block;
-  border: 1px solid #555;
-  padding: 10px;
-  font-size: 16px;
-  outline: none;
+  @include btn();
+  margin-top: 0;
 }
 
 .char-ul {
@@ -316,6 +311,7 @@ footer {
 }
 
 .avatar-img {
+  width: 100%;
   border-radius: 50%;
 }
 
@@ -490,5 +486,102 @@ footer {
 @media screen and (max-width: 600px) {
   .nav-side {
     width: 80%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  // header
+  header {
+    padding: 0;
+  }
+
+  p,
+  li {
+    font-size: 14px;
+  }
+
+  .nav {
+    h1 {
+      font-size: 20px;
+    }
+  }
+
+  .nav-side {
+    a {
+      font-size: 20px;
+      padding: 10px;
+    }
+  }
+
+  .notice-alert {
+    h2 {
+      font-size: 16px;
+    }
+
+    p {
+      font-size: 12px;
+    }
+
+    button {
+      padding: 5px;
+      font-size: 16px;
+    }
+  }
+
+  // main
+  .loading {
+    width: 30px;
+    margin: 10px auto;
+  }
+
+  .avatar {
+    width: 80px;
+  }
+
+  .char-server {
+    font-size: 13px;
+  }
+
+  .profile .avatar {
+    margin: auto;
+  }
+
+  .portrait {
+    width: 100%;
+  }
+
+  .profile-list li {
+    margin: 5px 0;
+  }
+
+  .orch-btn {
+    padding: 5px;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+
+  .list-title {
+    padding-left: 20px;
+    font-size: 16px;
+  }
+
+  .lists .list ul li {
+    padding-left: 35px;
+  }
+
+  // footer
+  footer {
+    flex-direction: column;
+    .inner {
+      font-size: 11px;
+    }
+
+    .sns {
+      margin-top: 10px;
+
+      a {
+        margin: 5px;
+      }
+    }
   }
 }
