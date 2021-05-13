@@ -1,8 +1,8 @@
-import React from "react";
-import Loading from "../Loading";
-import { useHistory } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, Route, useHistory } from "react-router-dom";
+import axios from "axios";
 
-const Emote = ({ posts, loading }) => {
+const Emotes = ({ posts, setPosts }) => {
   const history = useHistory();
   const allPage = posts.map((item, index) => {
     return (
@@ -22,9 +22,24 @@ const Emote = ({ posts, loading }) => {
       </tr>
     );
   });
+
+  useEffect(() => {
+    // setLoading(false);
+    axios
+      .get("https://ffxivcollect.com/api/emotes/")
+      .then((res) => {
+        setPosts(res.data.results);
+        console.log(res);
+        // setLoading(true);
+      })
+      .catch((e) => {
+        console.log("실패");
+      });
+  }, []);
+
   return (
-    <>
-      {loading === false ? <Loading /> : null}
+    <main>
+      <h2 className="main-title">Emotes</h2>
       <table>
         <thead>
           <tr>
@@ -37,8 +52,8 @@ const Emote = ({ posts, loading }) => {
         </thead>
         <tbody>{allPage}</tbody>
       </table>
-    </>
+    </main>
   );
 };
 
-export default Emote;
+export default Emotes;
