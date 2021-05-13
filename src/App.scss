@@ -89,12 +89,19 @@ header {
   li {
     font-size: 20px;
     padding: 20px;
-    a {
+    .nav-list {
       color: #fff;
+      &:hover {
+        color: $main;
+      }
+    }
+    .active {
+      color: $main;
     }
   }
 
   .fa-bars {
+    color: $main;
     font-size: 25px;
     cursor: pointer;
   }
@@ -451,10 +458,6 @@ footer {
 @media screen and (max-width: 1400px) {
   .wrap {
     max-width: 90%;
-  }
-
-  .header-inner {
-    max-width: 100%;
   }
 }
 
