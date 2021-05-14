@@ -5,12 +5,13 @@ import { Route, Switch } from "react-router-dom";
 import Home from "./routes/Home";
 import Emotes from "./routes/Emotes";
 import Emote from "./routes/Emote";
+import Orchestrions from "./routes/Orchestrions";
+import Orchestrion from "./routes/Orchestrion";
 import Another from "./routes/Another";
 // import Component
 import Header from "./component/Header";
 import Footer from "./component/Footer";
 import Alert from "./component/Alert";
-import OrchIndex from "./component/Orchestrions/OrchIndex";
 import NotFound from "./routes/NotFound";
 //import img
 import Loading from "./component/Loading";
@@ -50,9 +51,18 @@ function App() {
               <Emote posts={posts} setPosts={setPosts} {...props} />
             )}
           />
-          <Route path="/orchestrions">
-            <OrchIndex loading={loading} setLoading={setLoading} />
-          </Route>
+          <Route
+            exact
+            path="/orchestrions"
+            render={() => <Orchestrions posts={posts} setPosts={setPosts} />}
+          />
+          <Route
+            exact
+            path="/orchestrions/:id"
+            render={(props) => (
+              <Orchestrion posts={posts} setPosts={setPosts} {...props} />
+            )}
+          />
           <Route path="/another" component={Another} />
           <Route component={NotFound} />
         </Switch>
