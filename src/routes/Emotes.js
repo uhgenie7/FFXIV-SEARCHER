@@ -40,18 +40,20 @@ const Emotes = ({ posts, setPosts }) => {
   return (
     <main>
       <h2 className="main-title">Emotes</h2>
-      <table>
-        <thead>
-          <tr>
-            <th></th>
-            <th>감정표현</th>
-            <th>커맨드</th>
-            <th>카테고리</th>
-            <th>패치버전</th>
-          </tr>
-        </thead>
-        <tbody>{allPage}</tbody>
-      </table>
+      <div className="emote-posts">
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>감정표현</th>
+              <th>커맨드</th>
+              <th>카테고리</th>
+              <th>패치버전</th>
+            </tr>
+          </thead>
+          <tbody>{allPage}</tbody>
+        </table>
+      </div>
     </main>
   );
 };
