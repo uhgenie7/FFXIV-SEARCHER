@@ -34,8 +34,12 @@ function Character() {
                   .then((res) => {
                     setLoading(true);
                     let data = res.data.Results;
-                    resultChange(data);
-                    charChange(true);
+                    {
+                      data.length === 0
+                        ? alert("정보가 없습니다.")
+                        : resultChange(data);
+                      charChange(true);
+                    }
                   })
                   .catch((error) => {
                     console.log(error.response);
@@ -52,8 +56,12 @@ function Character() {
                 .then((res) => {
                   setLoading(true);
                   let data = res.data.Results;
-                  resultChange(data);
-                  charChange(true);
+                  {
+                    data.length === 0
+                      ? alert("정보가 없습니다.")
+                      : resultChange(data);
+                    charChange(true);
+                  }
                 })
                 .catch((error) => {
                   console.log(error.response);
@@ -90,12 +98,14 @@ function Character() {
             charDetail={charDetail}
             charDetailChange={charDetailChange}
             setLoading={setLoading}
+            history={history}
           />
 
           <CharDetailInfo
             charId={charId}
             charDetail={charDetail}
             charDetailChange={charDetailChange}
+            history={history}
           />
         </div>
       </Route>
@@ -158,6 +168,9 @@ function CharList(props) {
 function CharDetail(props) {
   useEffect(() => {
     props.setLoading(false);
+    if (props.charId === undefined) {
+      props.history.push("/");
+    }
     axios
       .get(`https://xivapi.com/character/${props.charId}`)
       .then((res) => {
@@ -165,57 +178,61 @@ function CharDetail(props) {
         props.charDetailChange(res.data.Character);
       })
       .catch((e) => {
-        console.log("에러");
+        console.log("Character not found on Lodestone");
       });
   }, []);
   return <div></div>;
 }
 
 function CharDetailInfo(props) {
-  return (
-    <div className="char-detail">
-      <div className="profile">
-        <div className="avatar">
-          <img
-            className="avatar-img"
-            src={props.charDetail.Avatar}
-            alt={props.charDetail.Name}
-          />
+  if (props.charId) {
+    return (
+      <div className="char-detail">
+        <div className="profile">
+          <div className="avatar">
+            <img
+              className="avatar-img"
+              src={props.charDetail.Avatar}
+              alt={props.charDetail.Name}
+            />
+          </div>
+          <h3>{props.charDetail.Name}</h3>
         </div>
-        <h3>{props.charDetail.Name}</h3>
+        <div className="profile-info">
+          <div className="portrait">
+            <img
+              width="100%"
+              src={props.charDetail.Portrait}
+              alt={props.charDetail.Name}
+            />
+          </div>
+          <div>
+            <ul className="profile-ul">
+              <li className="profile-list">
+                <ul>
+                  <li>
+                    생일: <span>{props.charDetail.Nameday}</span>
+                  </li>
+                  <li>
+                    서버 | 데이터 센터: <span>{props.charDetail.Server}</span> |
+                    <span> {props.charDetail.DC}</span>
+                  </li>
+                  <li>
+                    자유부대명: <span>{props.charDetail.FreeCompanyName}</span>
+                  </li>
+                  <li>
+                    소개: <span>{props.charDetail.bio}</span>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div className="profile-info">
-        <div className="portrait">
-          <img
-            width="100%"
-            src={props.charDetail.Portrait}
-            alt={props.charDetail.Name}
-          />
-        </div>
-        <div>
-          <ul className="profile-ul">
-            <li className="profile-list">
-              <ul>
-                <li>
-                  생일: <span>{props.charDetail.Nameday}</span>
-                </li>
-                <li>
-                  서버 | 데이터 센터: <span>{props.charDetail.Server}</span> |
-                  <span> {props.charDetail.DC}</span>
-                </li>
-                <li>
-                  자유부대명: <span>{props.charDetail.FreeCompanyName}</span>
-                </li>
-                <li>
-                  소개: <span>{props.charDetail.bio}</span>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  );
+    );
+  } else {
+    return null;
+  }
 }
 
 export default Character;
