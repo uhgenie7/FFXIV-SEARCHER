@@ -43,7 +43,14 @@ function App() {
           <Route
             exact
             path="/emotes"
-            render={() => <Emotes posts={posts} setPosts={setPosts} />}
+            render={() => (
+              <Emotes
+                loading={loading}
+                setLoading={setLoading}
+                posts={posts}
+                setPosts={setPosts}
+              />
+            )}
           />
           <Route
             path="/emotes/:id"
@@ -54,7 +61,14 @@ function App() {
           <Route
             exact
             path="/orchestrions"
-            render={() => <Orchestrions posts={posts} setPosts={setPosts} />}
+            render={() => (
+              <Orchestrions
+                loading={loading}
+                setLoading={setLoading}
+                posts={posts}
+                setPosts={setPosts}
+              />
+            )}
           />
           <Route
             exact
