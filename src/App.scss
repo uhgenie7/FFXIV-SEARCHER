@@ -448,9 +448,10 @@ footer {
   a {
     color: $main;
   }
-  audio {
-    margin: 20px;
-  }
+}
+
+.orch-card audio {
+  margin: 20px;
 }
 
 // resposive
@@ -495,6 +496,10 @@ footer {
 @media screen and (max-width: 480px) {
   // header
   header {
+    padding: 0;
+  }
+
+  .nav li {
     padding: 0;
   }
 
@@ -570,6 +575,12 @@ footer {
 
   .lists .list ul li {
     padding-left: 35px;
+  }
+
+  .orch-card audio {
+    width: 90%;
+    padding: 0;
+    margin-left: 20px;
   }
 
   // footer

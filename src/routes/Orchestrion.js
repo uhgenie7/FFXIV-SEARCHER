@@ -21,11 +21,10 @@ const Emote = ({ match }) => {
   if (orch) {
     return (
       <main>
-        <div>{orch.id}</div>
         <div className="orch-card">
           <div className="card-head">
             <div className="img-box">
-              <img src={orch.icon} alt="#" />
+              <img src={orch.icon} alt={orch.name} />
             </div>
             <h3>{orch.number}</h3>
             <h3>{orch.name}</h3>
