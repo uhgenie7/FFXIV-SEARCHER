@@ -3,7 +3,7 @@ import Loading from "../component/Loading";
 import { Link, Route, useHistory } from "react-router-dom";
 import axios from "axios";
 
-const Orchestrions = ({ posts, setPosts }) => {
+const Orchestrions = ({ posts, setPosts, loading, setLoading }) => {
   let [tab, setTab] = useState(0);
   const history = useHistory();
   const allPage = posts.map((item, index) => {
@@ -51,10 +51,12 @@ const Orchestrions = ({ posts, setPosts }) => {
     });
 
   useEffect(() => {
+    setLoading(false);
     axios
       .get("https://ffxivcollect.com/api/orchestrions/")
       .then((res) => {
         setPosts(res.data.results);
+        setLoading(true);
       })
       .catch((e) => {
         console.log("실패");
@@ -154,7 +156,7 @@ const Orchestrions = ({ posts, setPosts }) => {
           스토어
         </button>
       </div>
-      {/* {loading === false ? <Loading /> : null} */}
+      {loading ? null : <Loading />}
       <div className="orch-posts">
         <table>
           <thead>

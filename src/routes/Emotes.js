@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link, Route, useHistory } from "react-router-dom";
 import axios from "axios";
+import Loading from "../component/Loading";
 
-const Emotes = ({ posts, setPosts }) => {
+const Emotes = ({ posts, setPosts, loading, setLoading }) => {
   const history = useHistory();
   const allPage = posts.map((item, index) => {
     return (
@@ -24,13 +25,13 @@ const Emotes = ({ posts, setPosts }) => {
   });
 
   useEffect(() => {
-    // setLoading(false);
+    setLoading(false);
     axios
       .get("https://ffxivcollect.com/api/emotes/")
       .then((res) => {
         setPosts(res.data.results);
         console.log(res);
-        // setLoading(true);
+        setLoading(true);
       })
       .catch((e) => {
         console.log("실패");
@@ -41,6 +42,7 @@ const Emotes = ({ posts, setPosts }) => {
     <main>
       <h2 className="main-title">Emotes</h2>
       <div className="emote-posts">
+        {loading ? null : <Loading />}
         <table>
           <thead>
             <tr>
